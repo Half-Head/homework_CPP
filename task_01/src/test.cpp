@@ -1,6 +1,5 @@
+#include "mediana.hpp"
 #include <gtest/gtest.h>
-
-#include <mediana_func.hpp>
 
 TEST(Test, Simple) {
   ASSERT_EQ(mediana(1, 2, 3), 2);

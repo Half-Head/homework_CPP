@@ -9,6 +9,7 @@ int mediana(int first_number, int second_number, int third_number) {
 }
 
 int main() {
+
   int first, second, third;
   std ::cin >> first >> second >> third;
   std ::cout << mediana(first, second, third) << std ::endl;
