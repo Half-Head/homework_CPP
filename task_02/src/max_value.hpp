@@ -1,9 +1,19 @@
+#include <vector>
+#include <string>
+#include <algorithm>
 
-int max_value(int *array, int len) {
-  int value{array[0]};
-  for (int i{0}; i < len; ++i) {
-    if (array[i] > value)
-      value = array[i];
+struct array_error{
+  std :: string message {"array error"}; 
+};
+
+inline int max_value(std :: vector <int> arr, int length) {
+  if (length < 1)
+    throw array_error {};
+
+  int max_val = {arr[0]};
+  for (auto num:arr) {
+    max_val = std::max(max_val, num);
   }
-  return value;
+
+  return max_val;
 }

@@ -1,13 +1,33 @@
 #include <gtest/gtest.h>
+#include <vector>
 #include <max_value.hpp>
 
-TEST(Test, Simple) {
-  int arr1[3]{1, 2, 3};
-  int arr2[10]{7, 16, 48, 2, 3, 13, 1, 9, 12, 2};
-  int arr3[1]{17};
-  int arr4[5]{-8, 6, -65, 10, 2};
-  ASSERT_EQ(max_value(arr1, 3), 3);
-  ASSERT_EQ(max_value(arr2, 10), 48);
-  ASSERT_EQ(max_value(arr3, 1), 17);
-  ASSERT_EQ(max_value(arr4, 5), 10);
+TEST(max_value, normal) {
+  std::vector <int> a {1,2,3,4};
+  ASSERT_EQ(max_value(a, 4), 4);
+}
+
+TEST(max_value, unsorted) {
+  std::vector <int> a {5, 16, 7, 48, 3, 13};
+  ASSERT_EQ(max_value(a, 6), 48);
+}
+
+TEST(max_value, bellow_zero) {
+  std::vector <int> a {-1,-5,-6,-10,-3};
+  ASSERT_EQ(max_value(a, 5), -1);
+}
+
+TEST(max_value, repeated) {
+  std::vector <int> a {1,2,2,2,2,5,5,5};
+  ASSERT_EQ(max_value(a, 8), 5);
+}
+
+TEST(max_value, error) {
+  std::vector <int> a {7, 0, -5, 13, 14, -48, 7, 18, 17, 1, -30};
+  ASSERT_THROW(max_value(a, 0), array_error);
+}
+
+TEST(max_value, all) {
+  std::vector <int> a {7, 0, -5, 13, 14, -48, 7, 18, 17, 1, -30};
+  ASSERT_EQ(max_value(a, 11), 18);
 }
